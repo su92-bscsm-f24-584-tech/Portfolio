@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevOps + AI Portfolio</title>
+<title>DevOps Portfolio</title>
 
 <style>
 body {
@@ -266,7 +266,13 @@ Build dozens of project accross different domains<br>
  <a href="https://github.com/su92-bscsm-f24-584-tech" class="call-btn">For more info click on Project or click here</a>
    
 </div>
+    
+<div class="section-title">Higher Social Education</div>
 
+<div class="grid" id="studygrid"></div>
+<div class="section-title">Latest: On Going</div>
+
+<div class="grid" id="latestGrid"></div>
 <div class="section-title">AI/ML Projects</div>
 <div class="grid" id="aiGrid"></div>
 
@@ -286,29 +292,39 @@ Build dozens of project accross different domains<br>
 
 <script>
 
+const study = [{
+    n: "BSCS  ",
+    d: "Superior University Lahore: 4th semester CGPA: 2.8",
+    t:"Undergraduate ",
+}]    
+const latest = [{
+    n: " GitOps ",
+    d: "Custom orchestra for multiple apps in Docker container. Custom py apps, static pages, prometheus, grafana node exporter, nginx",
+    t:"Terraform, Ansible, Monitoring",
+}]
 const aiProjects = [
  {
   n:"R.A.I.S",
-  d:"Multi-model AI reasoning system with RAG + fusion architecture",
-  t:"Random-Forest • Bert (NLP) • Deep Learning",
+  d:"Multi-model AI. Random-Forest(10k+ data output of Bert, Lstm, Prophet), Bert (NLP)(12570 dataset), Deep Learning Custom 4 yrs of stock data yfinance",
+  t:"AI, ML, Deep learning, Random Forest, Prophet AI",
   url:"https://github.com/su92-bscsm-f24-584-tech/AI/tree/main/R.A.I.S"
  },
  {
   n:"Stock Predictor",
-  d:"Multi-Decision trees stacked (train)",
+  d:"Multi-Decision trees stacked (train) Kaggle Problem",
   t:"Sckit-learn",
   url:"https://github.com/su92-bscsm-f24-584-tech/AI/tree/main/stock-predictors"
  },
  {
   n:"PDF Analyzer",
   d:"Retrieval-Augmented Generation for document querying",
-  t:"RAG • Embeddings",
+  t:"RAG • Embeddings • Sementic search and B25 marking",
   url:"https://github.com/su92-bscsm-f24-584-tech/AI/tree/main/LEARN-FROM-PDF"
  },
  {
   n:"FAQ Chatbot",
   d:"Intent-based NLP chatbot system",
-  t:"Flask • NLP",
+  t:"Flask • Skitlearn",
   url:"https://github.com/su92-bscsm-f24-584-tech/AI/tree/main/chatbot"
  }
 ];
@@ -415,7 +431,8 @@ function render(list, id){
         grid.appendChild(card);
     });
 }
-
+render(study, "studygrid");    
+render(latest, "latestGrid");
 render(aiProjects, "aiGrid");
 render(devopsProjects, "devopsGrid");
 render(pythonProjects, "pythonGrid");
