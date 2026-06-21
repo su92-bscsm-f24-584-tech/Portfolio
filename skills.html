@@ -3,141 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skills</title>
+<title>Skills | Portfolio</title>
 
 <style>
 
 body{
     margin:0;
-    background:#0b0b0b;
     color:white;
     font-family:Arial;
     overflow-x:hidden;
+    position:relative;
 }
 
-.bg-glow{
+/* ================= BACKGROUND ================= */
+body::before{
+    content:"";
     position:fixed;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle, rgba(255,120,0,.15), transparent 80%);
-    filter:blur(70px);
-    animation:float 8s infinite ease-in-out;
-    z-index:0;
+    inset:0;
+
+    background:
+    linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.85)),
+    url("skill.png");   /* change image here */
+
+    background-size:cover;
+    background-position:center;
+    filter:blur(2px);
+    transform:scale(1.05);
+    z-index:-2;
 }
 
-@keyframes float{
-    0%,100%{transform:translate(0,0);}
-    50%{transform:translate(120px,80px);}
-}
-
+/* ================= HEADER ================= */
 .hero{
     text-align:center;
-    padding:90px 20px 40px;
-    position:relative;
-    z-index:2;
+    padding:80px 20px 30px;
 }
 
 .hero h1{
-    font-size:4rem;
-
-    background:linear-gradient(135deg,#ff7a00 50%,#fff 50%);
-    background-size:250%;
-    background-position:left;
-
+    font-size:3.5rem;
+    background:linear-gradient(135deg,#ff7a00,#fff);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-
-    transition:.7s;
-}
-
-.hero h1:hover{
-    background-position:right;
 }
 
 .hero p{
     color:#aaa;
     max-width:700px;
     margin:auto;
+    line-height:1.6;
 }
 
+/* ================= ADD SKILL BOX ================= */
+.add-box{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:30px auto;
+    flex-wrap:wrap;
+}
+
+input, select{
+    padding:10px 12px;
+    border-radius:10px;
+    border:none;
+    outline:none;
+    background:rgba(255,255,255,.08);
+    color:white;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:10px;
+    background:#ff7a00;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* ================= SECTION ================= */
 .section-title{
-    font-size:1.5rem;
-    margin:40px 10% 10px;
+    margin:40px 10%;
+    font-size:1.3rem;
+    color:#ff7a00;
     border-left:4px solid #ff7a00;
     padding-left:10px;
-
-    background:linear-gradient(135deg,#ff7a00 50%,#fff 50%);
-    background-size:250%;
-    background-position:left;
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    display:inline-block;
-    transition:.7s;
 }
 
-.section-title:hover{
-    background-position:right;
-}
-
+/* ================= GRID ================= */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-    padding:20px 10%;
-    position:relative;
-    z-index:2;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+    padding:0 10%;
 }
 
+/* ================= CARD ================= */
 .card{
-    background:#151515;
-    border-radius:15px;
-    padding:25px;
-    transition:.4s;
-    border:1px solid transparent;
-    cursor:pointer;
+    background:rgba(20,20,20,.55);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    padding:18px;
+    transition:.3s;
 }
 
 .card:hover{
-    transform:translateY(-10px);
+    transform:translateY(-8px);
     border-color:#ff7a00;
     box-shadow:0 0 25px rgba(255,122,0,.25);
 }
 
 .card h3{
+    margin:0 0 10px;
     color:#ff7a00;
-    margin-bottom:20px;
 }
 
 .tags{
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
+    gap:8px;
 }
 
 .tag{
-    background:#1d1d1d;
-    padding:8px 14px;
+    font-size:.8rem;
+    padding:6px 10px;
     border-radius:20px;
-    color:#ff7a00;
+    background:rgba(255,122,0,.12);
     border:1px solid rgba(255,122,0,.2);
-    transition:.3s;
 }
 
-.tag:hover{
-    background:#ff7a00;
-    color:black;
-}
-
+/* ================= BACK BUTTON ================= */
 .back{
     display:block;
-    width:max-content;
-    margin:50px auto;
-    text-decoration:none;
+    text-align:center;
+    margin:50px;
     color:#ff7a00;
+    text-decoration:none;
     font-size:1.1rem;
-    transition:.3s;
 }
 
 .back:hover{
@@ -146,144 +151,103 @@ body{
 
 </style>
 </head>
-<body>
 
-<div class="bg-glow"></div>
+<body>
 
 <div class="hero">
     <h1>TECHNICAL SKILLS</h1>
-
-    <p>
-        Technologies, frameworks and tools used in AI Engineering,
-        DevOps, Automation and Software Development.
-    </p>
-</div>
-
-<div class="section-title">Artificial Intelligence & Machine Learning</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>AI / ML</h3>
-
-<div class="tags">
-<div class="tag">PyTorch</div>
-<div class="tag">TensorFlow</div>
-<div class="tag">Scikit-Learn</div>
-<div class="tag">Pandas</div>
-<div class="tag">NumPy</div>
-<div class="tag">Matplotlib</div>
-<div class="tag">Random Forest</div>
-<div class="tag">LSTM</div>
-<div class="tag">BERT</div>
-<div class="tag">Prophet</div>
-<div class="tag">NLP</div>
-<div class="tag">RAG</div>
+    <p>AI, DevOps, Cloud, Programming, Marketing & Modern Software Engineering Skills</p>
 </div>
 
 </div>
 
-</div>
+<!-- ================= SECTIONS ================= -->
 
+<div class="section-title">AI & Machine Learning</div>
+<div class="grid" id="ai"></div>
 
 <div class="section-title">DevOps & Cloud</div>
+<div class="grid" id="devops"></div>
 
-<div class="grid">
-
-<div class="card">
-
-<h3>DevOps</h3>
-
-<div class="tags">
-<div class="tag">Docker</div>
-<div class="tag">Kubernetes</div>
-<div class="tag">Terraform</div>
-<div class="tag">Ansible</div>
-<div class="tag">GitHub Actions</div>
-<div class="tag">Prometheus</div>
-<div class="tag">Grafana</div>
-<div class="tag">AWS</div>
-<div class="tag">CI/CD</div>
-<div class="tag">Linux</div>
-<div class="tag">Bash</div>
-</div>
-
-</div>
-
-</div>
-
-
-<div class="section-title">Programming Languages</div>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Languages</h3>
-
-<div class="tags">
-<div class="tag">Python</div>
-<div class="tag">C++</div>
-<div class="tag">Assembly</div>
-<div class="tag">SQL</div>
-<div class="tag">JavaScript</div>
-<div class="tag">HTML</div>
-<div class="tag">CSS</div>
-</div>
-
-</div>
-
-</div>
-
+<div class="section-title">Programming</div>
+<div class="grid" id="prog"></div>
 
 <div class="section-title">Databases</div>
+<div class="grid" id="db"></div>
 
-<div class="grid">
+<div class="section-title">Marketing & Business</div>
+<div class="grid" id="mkt"></div>
 
-<div class="card">
+<a class="back" href="index.html">? Back to Portfolio</a>
 
-<h3>Database Systems</h3>
+<script>
 
-<div class="tags">
-<div class="tag">MySQL</div>
-<div class="tag">PostgreSQL</div>
-<div class="tag">SQLite</div>
-<div class="tag">Database Design</div>
-<div class="tag">Normalization</div>
-</div>
+const skills = [
+    {name:"PyTorch", cat:"AI & ML"},
+    {name:"TensorFlow", cat:"AI & ML"},
+    {name:"BERT / NLP", cat:"AI & ML"},
+    {name:"RAG Systems", cat:"AI & ML"},
 
-</div>
+    {name:"Docker", cat:"DevOps & Cloud"},
+    {name:"Kubernetes", cat:"DevOps & Cloud"},
+    {name:"Terraform", cat:"DevOps & Cloud"},
+    {name:"AWS", cat:"DevOps & Cloud"},
+    {name:"CI/CD", cat:"DevOps & Cloud"},
 
-</div>
+    {name:"Python", cat:"Programming"},
+    {name:"C++", cat:"Programming"},
+    {name:"HTML", cat:"Markup"},
+    {name:"YAML", cat:"Markup"},
+    {name:"Assembly", cat:"Programming"},
 
+    {name:"MySQL", cat:"Databases"},
+    {name:"PostgreSQL", cat:"Databases"},
 
-<div class="section-title">Tools & Platforms</div>
+    {name:"Shopify", cat:"Marketing"},
+    {name:"Digital Marketing", cat:"Marketing"},
+    {name:"SEO", cat:"Marketing"}
+];
 
-<div class="grid">
+function render(){
+    document.getElementById("ai").innerHTML = "";
+    document.getElementById("devops").innerHTML = "";
+    document.getElementById("prog").innerHTML = "";
+    document.getElementById("db").innerHTML = "";
+    document.getElementById("mkt").innerHTML = "";
 
-<div class="card">
+    skills.forEach(s=>{
+        const card = document.createElement("div");
+        card.className="card";
+        card.innerHTML = `
+            <h3>${s.name}</h3>
+            <div class="tags">
+                <div class="tag">${s.cat}</div>
+            </div>
+        `;
 
-<h3>Development Tools</h3>
+        if(s.cat=="AI & ML") document.getElementById("ai").appendChild(card);
+        if(s.cat=="DevOps & Cloud") document.getElementById("devops").appendChild(card);
+        if(s.cat=="Programming") document.getElementById("prog").appendChild(card);
+        if(s.cat=="Databases") document.getElementById("db").appendChild(card);
+        if(s.cat=="Marketing") document.getElementById("mkt").appendChild(card);
+    });
+}
 
-<div class="tags">
-<div class="tag">Git</div>
-<div class="tag">GitHub</div>
-<div class="tag">VS Code</div>
-<div class="tag">Jupyter</div>
-<div class="tag">Flask</div>
-<div class="tag">REST APIs</div>
-<div class="tag">JSON</div>
-<div class="tag">YAML</div>
-</div>
+function addSkill(){
+    const name = document.getElementById("skillName").value;
+    const cat = document.getElementById("category").value;
 
-</div>
+    if(!name) return;
 
-</div>
+    skills.push({name, cat});
+    render();
 
+    document.getElementById("skillName").value="";
+}
 
-<a href="https://su92-bscsm-f24-584-tech.github.io/Portfolio/" class="back">
-← Back to Portfolio
-</a>
+render();
+
+</script>
 
 </body>
 </html>
