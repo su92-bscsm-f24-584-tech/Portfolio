@@ -6,14 +6,36 @@
 <title>Portfolio</title>
 
 <style>
-body {
-    margin: 0;
-    background: #0b0b0b;
-    color: white;
-    font-family: Arial;
-    overflow-x: hidden;
+body{
+    margin:0;
+    color:white;
+    font-family:Arial;
+    overflow-x:hidden;
+    position:relative;
+    background:#000;
 }
 
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.82),
+            rgba(0,0,0,.88)
+        ),
+        url("download.png");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    filter:blur(2px);
+    transform:scale(1.08);
+
+    z-index:-2;
+}
 .bg-glow {
     position: fixed;
     width: 600px;
@@ -212,22 +234,34 @@ color:#2E2E2E;
     animation: nameFlow 8s linear infinite; 
     background-position: right;
 }
-.card {
-    background: #151515;
-    border-radius: 14px;
-    padding: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-    border: 1px solid transparent;
-    position: relative;
-    overflow: hidden;
-}
-.card:hover {
-    transform: translateY(-10px);
-    border: 1px solid #ff7a00;
-    box-shadow: 0 0 25px rgba(255,122,0,0.25);
+.card{
+    background:rgba(15,15,15,.55);
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    border-radius:16px;
+    padding:20px;
+
+    cursor:pointer;
+    transition:.35s;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    position:relative;
+    overflow:hidden;
 }
 
+.card:hover{
+    transform:translateY(-10px);
+
+    border-color:#ff7a00;
+
+    background:rgba(20,20,20,.7);
+
+    box-shadow:
+    0 0 30px rgba(255,122,0,.25);
+}
 .tags {
     margin-top: 10px;
     font-size: 0.8rem;
@@ -244,17 +278,35 @@ color:#2E2E2E;
     opacity: 1;
     transform: translateY(0);
 }
+.contact-card{
+    background:rgba(15,15,15,.55);
 
-.contact-footer{
-    position:relative;
-    margin-top:100px;
-    padding:80px 10%;
-    background:#111;
-    overflow:hidden;
-    border-top:1px solid rgba(255,122,0,.15);
-    text-align:center;
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    border-radius:16px;
+
+    padding:25px;
+
+    text-decoration:none;
+
+    color:white;
+
+    transition:.4s;
+
+    border:1px solid rgba(255,255,255,.08);
 }
 
+.contact-card:hover{
+    transform:translateY(-10px);
+
+    border-color:#ff7a00;
+
+    background:rgba(20,20,20,.75);
+
+    box-shadow:
+    0 0 30px rgba(255,122,0,.25);
+}
 .footer-glow{
     position:absolute;
     width:500px;
@@ -266,13 +318,23 @@ color:#2E2E2E;
     transform:translateX(-50%);
     pointer-events:none;
 }
+.contact-footer{
+    position:relative;
 
-.contact-footer h2{
-    font-size:2.5rem;
-    color:#ff7a00;
-    margin-bottom:15px;
+    margin-top:100px;
+
+    padding:80px 10%;
+
+    background:rgba(8,8,8,.65);
+
+    backdrop-filter:blur(18px);
+
+    border-top:1px solid rgba(255,122,0,.15);
+
+    overflow:hidden;
+
+    text-align:center;
 }
-
 .footer-desc{
     max-width:800px;
     margin:auto;
@@ -362,6 +424,48 @@ color:#2E2E2E;
         font-size:1.5rem;
     }
 }
+.skills-wrapper{
+    display:flex;
+    justify-content:center;
+    margin:60px 0;
+}
+
+.skills-btn{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:600;
+
+    padding:16px 40px;
+
+    border-radius:14px;
+
+    background:rgba(15,15,15,.55);
+
+    backdrop-filter:blur(5px);
+
+    border:1px solid rgba(255,122,0,.35);
+
+    transition:.35s;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.skills-btn:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#ff7a00;
+
+    box-shadow:
+    0 0 30px rgba(255,122,0,.25);
+
+    background:rgba(20,20,20,.75);
+}
 </style>
 </head>
 
@@ -372,7 +476,7 @@ color:#2E2E2E;
 <div class="hero">
     <h1>MUHAMMAD FAIZAN</h1><br>
     <h3>
-        AI Engineering </h3><h3> • DevOps Engineer </h3><h3> • Python Developer </h3><h3> • C++ </h3><h3> • Database </h3><h3> • Asembly Language 
+        AI Engineer </h3><h3> • DevOps Engineer </h3><h3> • Python Developer </h3><h3> • C++ </h3><h3> • Database </h3><h3> • Assembly Language 
       </h3><p>  <br>
 Build dozens of project accross different domains<br>
         Building scalable AI systems, automation pipelines, and production-ready infrastructure.</p>
@@ -408,11 +512,7 @@ Build dozens of project accross different domains<br>
 <div class="section-title">Data Science</div>
     
 <div class="grid" id="dataGrid"></div>
-    <a href="skills.html" target="_blank" class="contact-card">
-            
-            <h3>SKILL</h3>
-            <p>Technical Skills</p>
-        </a>
+    
 <!-- ================= CONTACT FOOTER ================= -->
 <footer class="contact-footer">
 
@@ -424,17 +524,24 @@ Build dozens of project accross different domains<br>
         Available for AI Engineering, DevOps, Python Development,
         Automation, Cloud Infrastructure, Data Science and Freelance Projects.
     </p>
+<div class="skills-wrapper">
+
+    <a href="skills.html" class="skills-btn">
+        Technical Skills 
+    </a>
+
+</div>
 
     <div class="footer-grid">
 
         <a href="tel:03705270734" class="contact-card">
-            <span>📞</span>
+            <span>??</span>
             <h3>Phone</h3>
             <p>03705270734</p>
         </a>
 
         <a href="https://wa.me/923705270734" target="_blank" class="contact-card">
-            <span>💬</span>
+            <span>??</span>
             <h3>WhatsApp</h3>
             <p>Chat Directly</p>
         </a>
@@ -452,7 +559,7 @@ Build dozens of project accross different domains<br>
         </a>
 
         <a href="https://www.linkedin.com/in/m-faizan-a68514358/" target="_blank" class="contact-card">
-            <span>💼</span>
+            <span>??</span>
             <h3>LinkedIn</h3>
             <p>Professional Profile</p>
         </a>
@@ -518,15 +625,10 @@ const aiProjects = [
 const devopsProjects = [
  {
  n: "Deploy and manage Infra platform",
- d: "Infrastrucutre as Code, containerization of apps and services with monitoring stack",
+ d: "Infrastructure-as-Code platform featuring containerized services and integrated monitoring.",
  t: "Prometheus • Grafana • Docker • Terraform • Ansible • GitHub Actions",
  url: "https://github.com"
-},{
-  n:"Terraform + Ansible Pipeline",
-  d:"CI/CD automation using Ansible + Terraform",
-  t:"DevOps • CI/CD",
-  url:"https://github.com/su92-bscsm-f24-584-tech/DevOps/tree/main/gitop/local-gitops-pipeline"
- },
+},
  {
   n:"Ansible Labs",
   d:"Infrastructure automation using Ansible playbooks",
@@ -535,13 +637,13 @@ const devopsProjects = [
  },
  {
   n:"Docker Networking",
-  d:"Multi-container communication system",
+  d:"Docker networking project demonstrating communication between multiple containers.",
   t:"Docker",
   url:"https://github.com/su92-bscsm-f24-584-tech/DevOps/tree/main/Connection-two-container"
  },
  {
-  n:"Terraform Infra",
-  d:"Cloud infrastructure provisioning (IaC)",
+  n:"Terraform Infra-dem",
+  d:"Infrastructure provisioning and management using Terraform and cloud services.",
   t:"Terraform • AWS",
   url:"https://github.com/su92-bscsm-f24-584-tech/DevOps/tree/main/terraform-zero-to-hero"
  }
@@ -550,21 +652,15 @@ const devopsProjects = [
 const pythonProjects = [
  {
   n:"Expense Tracker",
-  d:"Personal finance tracking system",
+  d:"Flask-based application for managing and tracking personal expenses.",
   t:"Python • Flask",
   url:"https://github.com/su92-bscsm-f24-584-tech/Python/tree/main/expense_measure"
  },
  {
   n:"ToDo App",
-  d:"Task management web application",
+  d:"Web-based task management application for organizing daily activities.",
   t:"Python • Web",
   url:"https://github.com/su92-bscsm-f24-584-tech/Python/tree/main/todo_app"
- },
- {
-  n:"Git Manager",
-  d:"Automation tool for Git workflows",
-  t:"Automation",
-  url:"https://github.com/su92-bscsm-f24-584-tech/Python/tree/main/git_manager"
  },
  {
   n:"Tour Region App",
@@ -577,7 +673,7 @@ const pythonProjects = [
 const cppProjects = [
  {
   n:"Elevator System",
-  d:"Event-driven elevator simulation",
+  d:"Event-driven elevator simulator implementing scheduling and movement algorithms.",
   t:"C++ • Algorithms",
   url:"https://github.com/su92-bscsm-f24-584-tech/Automation/tree/main/Elevator"
  }
@@ -586,7 +682,7 @@ const cppProjects = [
 const asmProjects = [
  {
   n:"Assembly Encryption",
-  d:"Low-level encryption system in Assembly",
+  d:"Assembly-language implementation of a low-level encryption mechanism.",
   t:"Assembly • Low-level Systems",
   url:"https://github.com/su92-bscsm-f24-584-tech/Asembly_Security/tree/main/Assembly-Encryption"
  }
@@ -594,8 +690,8 @@ const asmProjects = [
 const datasets = [
 {
 n:"R.A.I.S datasets",
-d:"Dataset generation for lstm, Bert, Randome Forest",
-t:"yfinance • News api",
+d:"Dataset generation and preprocessing pipeline for BERT, LSTM, and Random Forest models.",
+t:"yfinance • News API",
 url:"https://github.com/su92-bscsm-f24-584-tech/AI/tree/main/R.A.I.S"
  }
 ]
